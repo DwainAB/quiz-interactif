@@ -105,7 +105,8 @@ h1.darkmode {
 #question-text.darkmode,
 #result-screen p.darkmode,
 #result-screen h2.darkmode,
-#progress.darkmode {
+#progress.darkmode,
+#theme-select-label {
   color: #000;
 }
 

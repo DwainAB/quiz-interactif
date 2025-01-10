@@ -176,7 +176,7 @@ toggleDarkModeBtn.addEventListener("click", () => {
   document.body.classList.toggle("darkmode");
   document
     .querySelectorAll(
-      "h1, .notice, button, #timer-div, #progress, #result-screen h2, .top-score, .best-score-value, #question-text, #result-screen p, #result-screen h2"
+      "h1, .notice, button, #timer-div, #progress, #result-screen h2, .top-score, .best-score-value, #question-text, #result-screen p, #result-screen h2, #theme-select-label"
     )
     .forEach((element) => {
       element.classList.toggle("darkmode");
