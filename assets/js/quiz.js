@@ -107,6 +107,18 @@ const questions = [
     timeLimit: 6,
     theme: "french",
   },
+  {
+    text: "Cliquez sur l'image qui montre un chien.",
+    answers: [
+      "../assets/img/chien.jpg",
+      "../assets/img/chat.jpg",
+      "../assets/img/perroquet.jpg",
+      "../assets/img/elephant.jpg",
+    ],
+    correct: 0,
+    timeLimit: 6,
+    theme: "culture",
+  },
 ];
 
 let currentQuestionIndex = 0;
@@ -192,9 +204,29 @@ function showQuestion() {
   setText(currentQuestionIndexSpan, currentQuestionIndex + 1);
 
   answersDiv.innerHTML = "";
+
   q.answers.forEach((answer, index) => {
-    const btn = createAnswerButton(answer, () => selectAnswer(index, btn));
-    answersDiv.appendChild(btn);
+    let answerElement;
+    if (
+      answer.includes(".jpg") ||
+      answer.includes(".png") ||
+      answer.includes(".jpeg")
+    ) {
+      console.log("images answers");
+      answerElement = document.createElement("img");
+      answerElement.src = answer;
+      answerElement.alt = "Image";
+      answerElement.classList.add("answer-img");
+      answerElement.addEventListener("click", () =>
+        selectAnswer(index, answerElement)
+      );
+    } else {
+      answerElement = createAnswerButton(answer, () =>
+        selectAnswer(index, answerElement)
+      );
+    }
+
+    answersDiv.appendChild(answerElement);
   });
 
   nextBtn.classList.add("hidden");
