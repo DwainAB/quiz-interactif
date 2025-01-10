@@ -23,12 +23,21 @@ const questions = [
     answers: ["Marseille", "Paris", "Lyon", "Bordeaux"],
     correct: 1,
     timeLimit: 10,
+    theme: "culture",
   },
   {
     text: "Combien font 2 + 3 ?",
     answers: ["3", "4", "5", "1"],
     correct: 2,
     timeLimit: 5,
+    theme: "math",
+  },
+  {
+    text: "Quel est le synonyme de 'joyeux' ?",
+    answers: ["Triste", "Heureux", "Fâché", "Calme"],
+    correct: 1,
+    timeLimit: 8,
+    theme: "french",
   },
 ];
 
@@ -36,6 +45,7 @@ let currentQuestionIndex = 0;
 let score = 0;
 let bestScore = loadFromLocalStorage("bestScore", 0);
 let timerId = null;
+let filteredQuestions = [...questions];
 
 // DOM Elements
 const introScreen = getElement("#intro-screen");
@@ -57,12 +67,16 @@ const timeLeftSpan = getElement("#time-left");
 const currentQuestionIndexSpan = getElement("#current-question-index");
 const totalQuestionsSpan = getElement("#total-questions");
 
+const themeSelect = getElement("#theme-select");
+
 const toggleDarkModeBtn = getElement("#toggle-darkmode");
 
 // Init
 startBtn.addEventListener("click", startQuiz);
 nextBtn.addEventListener("click", nextQuestion);
 restartBtn.addEventListener("click", restartQuiz);
+
+themeSelect.addEventListener("change", filterQuestionsByTheme);
 
 
 /////////////////////////////////////////Feature Dark Mode
@@ -78,6 +92,15 @@ toggleDarkModeBtn.addEventListener("click", () => {
 
 setText(bestScoreValue, bestScore);
 
+function filterQuestionsByTheme() {
+  const selectedTheme = themeSelect.value;
+  if (selectedTheme === "all") {
+    filteredQuestions = [...questions];
+  } else {
+    filteredQuestions = questions.filter((q) => q.theme === selectedTheme);
+  }
+}
+
 function startQuiz() {
   hideElement(introScreen);
   showElement(questionScreen);
@@ -85,7 +108,7 @@ function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
 
-  setText(totalQuestionsSpan, questions.length);
+  setText(totalQuestionsSpan, filteredQuestions.length);
 
   showQuestion();
 }
@@ -93,7 +116,7 @@ function startQuiz() {
 function showQuestion() {
   clearInterval(timerId);
 
-  const q = questions[currentQuestionIndex];
+  const q = filteredQuestions[currentQuestionIndex];
   setText(questionText, q.text);
   setText(currentQuestionIndexSpan, currentQuestionIndex + 1);
 
@@ -119,7 +142,7 @@ function showQuestion() {
 function selectAnswer(index, btn) {
   clearInterval(timerId);
 
-  const q = questions[currentQuestionIndex];
+  const q = filteredQuestions[currentQuestionIndex];
   if (index === q.correct) {
     score++;
     btn.classList.add("correct");
@@ -134,7 +157,7 @@ function selectAnswer(index, btn) {
 
 function nextQuestion() {
   currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
+  if (currentQuestionIndex < filteredQuestions.length) {
     showQuestion();
   } else {
     endQuiz();
@@ -145,7 +168,7 @@ function endQuiz() {
   hideElement(questionScreen);
   showElement(resultScreen);
 
-  updateScoreDisplay(scoreText, score, questions.length);
+  updateScoreDisplay(scoreText, score, filteredQuestions.length);
 
   if (score > bestScore) {
     bestScore = score;
