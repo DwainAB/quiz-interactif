@@ -61,17 +61,17 @@ button:hover {
 }
 
 .correct {
-  background-color: #c8e6c9 !important; /* vert clair */
+  background-color: #c8e6c9 !important; 
 }
 
 .wrong {
-  background-color: #ffcdd2 !important; /* rouge clair */
+  background-color: #ffcdd2 !important; 
 }
 
 #timer-div {
   margin-top: 10px;
   font-weight: bold;
-  color: #d32f2f; /* rouge foncé */
+  color: #d32f2f; 
 }
 
 #progress {
@@ -82,7 +82,7 @@ button:hover {
 
 #result-screen h2 {
   margin-bottom: 20px;
-  color: #2e7d32; /* vert foncé */
+  color: #2e7d32; 
 }
 
 #score-text {
