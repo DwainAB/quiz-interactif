@@ -61,17 +61,17 @@ button:hover {
 }
 
 .correct {
-  background-color: #c8e6c9 !important; /* vert clair */
+  background-color: #c8e6c9 !important;
 }
 
 .wrong {
-  background-color: #ffcdd2 !important; /* rouge clair */
+  background-color: #ffcdd2 !important;
 }
 
 #timer-div {
   margin-top: 10px;
   font-weight: bold;
-  color: #d32f2f; /* rouge foncé */
+  color: #d32f2f;
 }
 
 #progress {
@@ -82,10 +82,46 @@ button:hover {
 
 #result-screen h2 {
   margin-bottom: 20px;
-  color: #2e7d32; /* vert foncé */
+  color: #2e7d32;
 }
 
 #score-text {
   font-size: 1.2em;
   margin-bottom: 10px;
+}
+
+body.darkmode {
+  background: #333;
+  color: #fafafa;
+}
+
+h1.darkmode {
+  color: #fafafa;
+}
+
+.notice.darkmode,
+.top-score.darkmode,
+.best-score-value.darkmode,
+#question-text.darkmode,
+#result-screen p.darkmode,
+#result-screen h2.darkmode,
+#progress.darkmode,
+#theme-select-label {
+  color: #000;
+}
+
+button.darkmode {
+  background-color: #555;
+  color: #fff;
+}
+
+#timer-div.darkmode {
+  color: #ffcc00;
+}
+
+.answer-img {
+  width: 200px;
+  height: 200px;
+  padding: 1rem;
+  object-fit: cover;
 }
