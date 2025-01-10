@@ -39,6 +39,74 @@ const questions = [
     timeLimit: 8,
     theme: "french",
   },
+  {
+    text: "Qui a peint la Mona Lisa ?",
+    answers: [
+      "Vincent Van Gogh",
+      "Claude Monet",
+      "Pablo Picasso",
+      "Léonard de Vinci",
+    ],
+    correct: 3,
+    timeLimit: 15,
+    theme: "culture",
+  },
+  {
+    text: "Quel est le plus grand musée du monde ?",
+    answers: ["Le Louvre", "Le British Museum", "Le Musée d'Orsay", "Le Prado"],
+    correct: 0,
+    timeLimit: 12,
+    theme: "culture",
+  },
+  {
+    text: "Dans quelle ville se trouve la Tour Eiffel ?",
+    answers: ["Berlin", "Paris", "Rome", "Madrid"],
+    correct: 1,
+    timeLimit: 10,
+    theme: "culture",
+  },
+  {
+    text: "Combien fait 7 x 8 ?",
+    answers: ["56", "49", "64", "42"],
+    correct: 0,
+    timeLimit: 5,
+    theme: "math",
+  },
+  {
+    text: "Quel est le résultat de 25 ÷ 5 ?",
+    answers: ["4", "5", "6", "7"],
+    correct: 1,
+    timeLimit: 5,
+    theme: "math",
+  },
+  {
+    text: "Si x = 4, quelle est la valeur de x² ?",
+    answers: ["8", "16", "4", "2"],
+    correct: 1,
+    timeLimit: 8,
+    theme: "math",
+  },
+  {
+    text: "Quel est le contraire de 'heureux' ?",
+    answers: ["Triste", "Joyeux", "Content", "Satisfait"],
+    correct: 0,
+    timeLimit: 8,
+    theme: "french",
+  },
+  {
+    text: "Comment écrit-on le pluriel de 'cheval' ?",
+    answers: ["Chevaux", "Chevals", "Chevales", "Chevauxs"],
+    correct: 0,
+    timeLimit: 10,
+    theme: "french",
+  },
+  {
+    text: "Quelle est la bonne orthographe ?",
+    answers: ["Papillon", "Papyllon", "Pappillon", "Papyllon"],
+    correct: 0,
+    timeLimit: 6,
+    theme: "french",
+  },
 ];
 
 let currentQuestionIndex = 0;
@@ -78,14 +146,17 @@ restartBtn.addEventListener("click", restartQuiz);
 
 themeSelect.addEventListener("change", filterQuestionsByTheme);
 
-
 /////////////////////////////////////////Feature Dark Mode
 
 toggleDarkModeBtn.addEventListener("click", () => {
   document.body.classList.toggle("darkmode");
-  document.querySelectorAll("h1, .notice, button, #timer-div, #progress, #result-screen h2, .top-score, .best-score-value, #question-text, #result-screen p, #result-screen h2").forEach(element => {
-    element.classList.toggle("darkmode");
-  });
+  document
+    .querySelectorAll(
+      "h1, .notice, button, #timer-div, #progress, #result-screen h2, .top-score, .best-score-value, #question-text, #result-screen p, #result-screen h2"
+    )
+    .forEach((element) => {
+      element.classList.toggle("darkmode");
+    });
 });
 
 /////////////////////////////////////////
