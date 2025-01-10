@@ -163,6 +163,19 @@ toggleDarkModeBtn.addEventListener("click", () => {
 
 setText(bestScoreValue, bestScore);
 
+
+/////////////////////////////////////////Feature Random Question
+
+function randomQuestion(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+/////////////////////////////////////////Feature Question By Theme
+
+
 function filterQuestionsByTheme() {
   const selectedTheme = themeSelect.value;
   if (selectedTheme === "all") {
@@ -170,7 +183,11 @@ function filterQuestionsByTheme() {
   } else {
     filteredQuestions = questions.filter((q) => q.theme === selectedTheme);
   }
+  randomQuestion(filteredQuestions);
 }
+
+/////////////////////////////////////////
+
 
 function startQuiz() {
   hideElement(introScreen);
@@ -253,4 +270,9 @@ function restartQuiz() {
   showElement(introScreen);
 
   setText(bestScoreValue, bestScore);
+  
+  randomQuestion(questions);
+  filteredQuestions = [...questions]; 
+  
+  themeSelect.value = "all";
 }
