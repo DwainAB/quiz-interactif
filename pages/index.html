@@ -12,13 +12,13 @@
       <p class="notice">
         Testez vos connaissances en quelques questions chronométrées !
       </p>
-      <p>Meilleur score : <span id="best-score-value">0</span></p>
+      <p class="top-score">Meilleur score : <span id="best-score-value">0</span></p>
       <button id="start-btn">Commencer le quiz</button>
     </div>
 
     <div id="question-screen" style="display: none">
       <div id="progress">
-        Question <span id="current-question-index"></span> /
+        Question <span id="current-question-index"></span> 
         <span id="total-questions"></span>
       </div>
       <p id="question-text"></p>
@@ -33,6 +33,8 @@
       <p>Meilleur score : <span id="best-score-end">0</span></p>
       <button id="restart-btn">Recommencer</button>
     </div>
+
+    <button id="toggle-darkmode">Activer le mode sombre</button>
 
     <script type="module" src="../assets/js/quiz.js"></script>
   </body>

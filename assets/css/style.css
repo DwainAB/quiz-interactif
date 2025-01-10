@@ -89,3 +89,27 @@ button:hover {
   font-size: 1.2em;
   margin-bottom: 10px;
 }
+
+body.darkmode {
+  background: #333;
+  color: #fafafa;
+}
+
+h1.darkmode {
+  color: #fafafa;
+}
+
+.notice.darkmode, .top-score.darkmode, .best-score-value.darkmode, #question-text.darkmode, #result-screen p.darkmode, #result-screen h2.darkmode, #progress.darkmode {
+  color: #000;
+}
+
+button.darkmode {
+  background-color: #555;
+  color: #fff;
+}
+
+#timer-div.darkmode {
+  color: #ffcc00; 
+}
+
+

@@ -57,10 +57,24 @@ const timeLeftSpan = getElement("#time-left");
 const currentQuestionIndexSpan = getElement("#current-question-index");
 const totalQuestionsSpan = getElement("#total-questions");
 
+const toggleDarkModeBtn = getElement("#toggle-darkmode");
+
 // Init
 startBtn.addEventListener("click", startQuiz);
 nextBtn.addEventListener("click", nextQuestion);
 restartBtn.addEventListener("click", restartQuiz);
+
+
+/////////////////////////////////////////Feature Dark Mode
+
+toggleDarkModeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("darkmode");
+  document.querySelectorAll("h1, .notice, button, #timer-div, #progress, #result-screen h2, .top-score, .best-score-value, #question-text, #result-screen p, #result-screen h2").forEach(element => {
+    element.classList.toggle("darkmode");
+  });
+});
+
+/////////////////////////////////////////
 
 setText(bestScoreValue, bestScore);
 
